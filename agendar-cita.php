@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <h1>Agendar Nueva Cita</h1>
     
     <p>Paciente: <strong><?php echo $user_name; ?></strong></p>
-    <p><a href="mis-citas.php">← Volver a mis citas</a> | <a href="logout.php">Cerrar sesión</a></p>
+    <p><a href="mis-citas-paciente.php">← Volver a mis citas</a> | <a href="logout.php">Cerrar sesión</a></p>
     
     <?php if (isset($mensaje)): ?>
         <p style="color: <?php echo ($tipo_mensaje == 'success') ? 'green' : 'red'; ?>;">

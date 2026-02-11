@@ -12,6 +12,7 @@ if (isset($_SESSION['user_type'])) {
 }
 
 require 'config.php';
+$titulo = "Login";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
@@ -72,45 +73,90 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesión</title>
+    <title><?php echo $titulo; ?></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
 </head>
 
-<body>
-    <h1>Iniciar Sesión</h1>
+<body class="bg-light">
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-5">
+                <div class="card shadow">
+                    <div class="card-body p-5">
+                        <div class="text-center mb-4">
+                            <i class="bi bi-calendar-check text-primary" style="font-size: 3rem;"></i>
+                            <h2 class="mt-2">Iniciar Sesión</h2>
+                            <p class="text-muted">Sistema de Gestión de Citas</p>
+                        </div>
 
-    <?php if (isset($error)): ?>
-        <p style="color: red;"><?php echo $error; ?></p>
-    <?php endif; ?>
+                        <?php if (isset($error)): ?>
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <i class="bi bi-exclamation-triangle"></i> <?php echo $error; ?>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            </div>
+                        <?php endif; ?>
 
-    <form method="POST">
-        <label>Tipo de usuario:</label>
-        <select name="user_type" required>
-            <option value="">Seleccione...</option>
-            <option value="paciente">Paciente</option>
-            <option value="provider">Proveedor de Servicios</option>
-        </select>
-        <br><br>
+                        <form method="POST">
+                            <div class="mb-3">
+                                <label for="user_type" class="form-label">Tipo de usuario</label>
+                                <select name="user_type" id="user_type" class="form-select" required>
+                                    <option value="">Seleccione...</option>
+                                    <option value="paciente">Paciente</option>
+                                    <option value="provider">Proveedor de Servicios</option>
+                                </select>
+                            </div>
 
-        <label>Email:</label>
-        <input type="email" name="email" required autofocus>
-        <br><br>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                                    <input type="email" class="form-control" id="email" name="email" required autofocus>
+                                </div>
+                            </div>
 
-        <label>Contraseña:</label>
-        <input type="password" name="password" required>
-        <br><br>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Contraseña</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                                    <input type="password" class="form-control" id="password" name="password" required>
+                                </div>
+                            </div>
 
-        <button type="submit">Entrar</button>
-    </form>
+                            <button type="submit" class="btn btn-primary w-100">
+                                <i class="bi bi-box-arrow-in-right"></i> Entrar
+                            </button>
+                        </form>
 
-    <hr>
-    <p>¿No tienes cuenta? <a href="registro.php">Regístrate aquí</a></p>
+                        <hr class="my-4">
+
+                        <div class="text-center">
+                            <p class="text-muted mb-2">¿No tienes cuenta?</p>
+                            <a href="registro.php" class="btn btn-outline-primary">Regístrate aquí</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <p class="mb-1"><strong>Para testing:</strong></p>
+                        <small class="text-muted">
+                            Paciente: pedro@email.com / password<br>
+                            Proveedor: carlos@clinic.com / password
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
