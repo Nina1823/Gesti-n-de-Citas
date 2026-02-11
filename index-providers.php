@@ -1,13 +1,12 @@
 <?php
 session_start();
+require 'config.php';
 
 // PROTECCIÓN: Si no está logueado, redirigir a login
 if (!isset($_SESSION['provider_id'])) {
     header("Location: login.php");
     exit;
 }
-
-require 'config.php';
 
 $provider_id = $_SESSION['provider_id'];
 $provider_name = $_SESSION['provider_name'];
@@ -129,7 +128,7 @@ $citas = $stmt_citas->get_result();
         <a href="logout.php">Cerrar Sesión</a>
     </div>
 
-    <p>Bienvenido, <strong><?php echo $provider_name; ?></strong></p>
+    <p>Bienvenido Dr, <strong><?php echo $provider_name; ?></strong></p>
 
     <?php if (isset($mensaje)): ?>
         <p style="color: <?php echo ($tipo_mensaje == 'success') ? 'green' : 'red'; ?>;">

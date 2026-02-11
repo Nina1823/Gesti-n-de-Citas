@@ -194,14 +194,10 @@ ALTER TABLE providers ADD COLUMN password VARCHAR(255) AFTER email;
 ALTER TABLE providers ADD COLUMN password VARCHAR(255) AFTER email;
 
 -- Actualizar providers existentes con contraseñas (para testing)
-UPDATE providers SET password = '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi' WHERE id_provider = 1;
--- Contraseña: password
-
+UPDATE providers SET password = '$2y$10$92IXUNpkjO0rOQ5byMi' WHERE id_provider = 1;
 UPDATE providers SET password = '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi' WHERE id_provider = 2;
--- Contraseña: password
-
 UPDATE providers SET password = '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi' WHERE id_provider = 3;
--- Contraseña: password
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

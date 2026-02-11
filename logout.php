@@ -1,12 +1,13 @@
 <?php
-    session_start();
-    $_SESSION = array();
-    //Destruir todas las variables de sesion
-    session_destroy();
+session_start();
 
-    //redirigir al login
-    header("Location:login.php");
+// Guardar el tipo de usuario antes de destruir
+$user_type = isset($_SESSION['user_type']) ? $_SESSION['user_type'] : null;
 
-    exit;
+// Destruir sesión
+$_SESSION = array();
+session_destroy();
 
-?>
+// Redirigir al login
+header("Location: login.php");
+exit;
